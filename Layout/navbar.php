@@ -1,4 +1,5 @@
 <?php
+include 'functions.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -204,7 +205,19 @@ session_start();
                                         </a>
                                         <div class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="dashboard.php">Dashboard</a>
-                                            <a class="dropdown-item" href="agency-dashboard.php?id=<?php echo $_SESSION['id'] ?>">Agency Dashboard</a>
+                                            
+                                            <?php 
+
+                                            if(agency_verified('1','0')>0){
+                                                if(agency_verified('0','1') == 'Approved'){    
+                                            ?>
+                                                <a class="dropdown-item" href="agency-dashboard.php?id=<?php echo $_SESSION['id'] ?>">Agency Dashboard</a>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
+  
+
                                             <a class="dropdown-item" href="personalinfo.php">Personal Info</a>
                                             <a class="dropdown-item" href="logout.php">Sign Out</a>
                                             </div>

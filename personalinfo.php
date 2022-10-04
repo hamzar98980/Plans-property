@@ -1,7 +1,6 @@
 <?php
 ob_start();
 include 'dbconfig.php';
-include 'functions.php';
 include 'encode.php';
 $title="Personal Info";
 include('Layout/navbar.php');

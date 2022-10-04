@@ -98,7 +98,7 @@ $json_data = json_decode($json,true);
                     <div class="col-sm-6 card-box">
                 <h1 class="text-center h2 cr mb-4 block-title"><b>Register Your Agency</b></h1>
 
-                        <form action="register-agency.php" method="post">
+                        <form action="register-agency.php" method="post"  enctype="multipart/form-data">
 
 
                             <div class="form-row">
@@ -112,7 +112,7 @@ $json_data = json_decode($json,true);
                                 <div class="col-md-6 mb-8">
                                     <label for="">Logo</label>
                                     <div class="input-group">
-                                        <input type="file" name="flogo" placeholder="Select File" required>
+                                        <input type="file" name="file" placeholder="Select File" required>
                                     </div>
                                 </div>
                             </div>
@@ -214,8 +214,20 @@ $json_data = json_decode($json,true);
 
 
                         <br>
+                        <?php
+                          if(agency_verified('1','0')>0){
+                            if(agency_verified('0','1') == 'Pending'){
+                                echo '<div class="alert alert-warning" role="alert">Registration in Pending</div>';
+                            }
+                          } 
+                           else{
+                                echo '
+                                <button class="btn btn-outline-info btn_w" type="submit">Submit Form</button>
+                                
+                                ';
+                            }
+                        ?>
 
-                            <button class="btn btn-outline-info btn_w" type="submit">Submit Form</button>
                         </form> 
                     </div>
 

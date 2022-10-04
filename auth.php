@@ -2,7 +2,7 @@
 ob_start();
 include 'dbconfig.php';
 include 'Layout/navbar.php';
-include 'functions.php';
+// include 'functions.php';
 
 if(empty($_SESSION['id'])){
   header("Location: index.php");
