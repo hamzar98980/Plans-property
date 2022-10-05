@@ -63,6 +63,19 @@ include 'dbconfig.php';
     /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
+.add_img{
+        height: 305px;
+        width: 252px;
+    }
+  .tab1{
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+  }
+.txt1{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+  
 </style>
 
 <div class="container">
@@ -111,19 +124,19 @@ include 'dbconfig.php';
                                 <div class="col-6 col-lg-4">
                                     <div class="count-data text-center">
                                         <h6 class="count h2" data-to="500" data-speed="500"><?php echo no_of_rows_bytable('s_add','where ag_id = '.$r['agent_id']) ?></h6>
-                                        <p class="m-0px font-w-600">Listed Properties</p>
+                                        <p class="m-0px font-w-600 txt1">Listed Properties</p>
                                     </div>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <div class="count-data text-center">
                                         <h6 class="count h2" data-to="150" data-speed="150"><?php echo no_of_rows_bytable('s_follow','where from_follow = '.$r['agent_id']) ?></h6>
-                                        <p class="m-0px font-w-600">Followers</p>
+                                        <p class="m-0px font-w-600 txt1">Followers</p>
                                     </div>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <div class="count-data text-center">
                                         <h6 class="count h2" data-to="850" data-speed="850"><?php echo no_of_rows_bytable('s_follow','where to_follow = '.$r['agent_id']) ?></h6>
-                                        <p class="m-0px font-w-600">Following</p>
+                                        <p class="m-0px font-w-600 txt1">Following</p>
                                     </div>
                                 </div>
                               
@@ -168,7 +181,7 @@ include 'dbconfig.php';
                       <h4 class="text-info"><?php echo $r['s_name'] ?></h4>
                       <p class="text-secondary mb-1"><i class="text-success fa fa-check"> </i> Verified Property Agent</p>
                       <p class="text-muted font-size-sm"></p>
-                      <button class="btn btn-outline-primary">Chat Now!</button>
+                      <button class="btn1 btn btn-outline-primary">Chat Now!</button>
                       
                       <a  class="btn green-btn btn-success btn_w" href="https://api.whatsapp.com/send?phone=<?php 
                         if(substr($rm['s_num'],0,1)=="0")
@@ -186,10 +199,13 @@ include 'dbconfig.php';
               <div class="card cd1 mt-3">
 
                  <!--  -->
+                 
                 
               </div>
 
             </div>
+
+
             <div class="col-md-8">
               <div class="card cd1 mb-3">
                 <div class="card-body cb1">
@@ -260,65 +276,256 @@ include 'dbconfig.php';
               </div>
 
               <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
+                <div class="col-sm-12 mb-3">
                   <div class="card cd1 h-100">
                     <div class="card-body cb1">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    
+                    <div class="container">
+
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                          aria-controls="home" aria-selected="true">Approved Properties</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#menu1" role="tab"
+                          aria-controls="menu1" aria-selected="false">Unpproved Properties</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#menu2" role="tab"
+                          aria-controls="menu2" aria-selected="false">Rejected Properties</a>
+                      </li>
+                    </ul>
+
+                        <!-- <ul class="nav nav-tabs">
+                          <li class="active tab1"><a data-toggle="tab" href="#home">Approved Properties</a></li>
+                          <li class="tab1"><a data-toggle="tab" href="#menu1">Unpproved Properties</a></li>
+                          <li class="tab1"><a data-toggle="tab" href="#menu2">Rejected Properties</a></li> -->
+                          <!-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> -->
+                        <!-- </ul> -->
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="width:1050px;">
+                              <br>
+                              <br>
+                          
+                                <div class="listings_two_page_content">
+                                  <div class="row">
+                                    <div class="col-xl-8 col-lg-12">
+                                      <div class="listings_two_page_content_inner">
+
+                                      <?php 
+                                      $sql_get = "SELECT * from s_add where a_status = 'Approved' and ag_id = '$agent_id'";
+                                      $res = $con->query($sql_get);
+                                      while ($r = $res->fetch_array()) {
+                                        $title = $r['a_title']; 
+                                        $price = $r['a_price'];   
+                                        $aid = $r['a_id'];  
+                                      ?>
+
+
+                                            <div class="listings_two_page_content_single">
+                                              <div class="listings_two_page_main_img">
+                                                  <div class="listings_two_page_content_carousel owl-theme owl-carousel">
+                                                      
+                                                      <?php 
+                                                      $sql_img = "SELECT * from aimg where ai_id = '$aid'";
+                                                      $res1 = $con->query($sql_img);
+                                                      while ($im = $res1->fetch_array()) {
+                                                      ?>
+                                                      <div class="listings_two_page_img">
+                                                          <div class="listings_two_page_content_img_box">
+                                                          <img src="<?php echo 'images/'.$im['i_pic'] ?>" class="add_img" alt="" >
+                                                          </div>
+                                                          <div class="listings_two_page_content_icon">
+                                                              <i class="fa fa-heart"></i>
+                                                          </div>
+                                                          <div class="listingstwo_page_content_btn">
+                                                      
+                                                          <a href="#" class="featured_btn"><?php echo $r['a_type'] ?></a>
+                                                              <a href="#" class="sale_btn"><?php echo $r['a_cat'] ?></a>
+                                                          </div>
+                                                      </div>
+                                                      <?php } ?>
+
+                                                  </div>
+                                              </div>
+                                              <div class="listings_two_page_bottom_content" style="height: 305px;">
+                                                  <div class="listings_two_page_bottom_content_top">
+                                                      <h4 class="title"><a href="listing-details.html"><?php echo $title ?></a></h4>
+                                                      <p><?php echo $r['a_loc'].','.$r['a_city'] ?></p>
+                                                      <h3>Rs.<?php echo $price ?><span> Sqft</span></h3>
+                                                  </div>
+                                                  <div class="listings_two_page_bottom_item">
+                                                      <ul class="list-unstyled">
+                                                          <li><span class="icon-bed"></span><?php echo $r['a_bad'] ?></li>
+                                                          <li><span class="icon-shower"></span><?php echo $r['a_bath'] ?></li>
+                                                          <li><span class="icon-square-measument"></span><?php echo $r['a_area'] ?> sqft</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        <?php } ?>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            
+                          </div>
+                          <div class="tab-pane fade" id="menu1" role="tabpanel" aria-labelledby="profile-tab" style="width:1050px;">
+                            <br>
+                            <br>
+                          <div class="listings_two_page_content">
+                                  <div class="row">
+                                    <div class="col-xl-8 col-lg-12">
+                                      <div class="listings_two_page_content_inner">
+
+                                      <?php 
+                                      $sql_get = "SELECT * from s_add where a_status = 'Pending' and ag_id = '$agent_id'";
+                                      $res = $con->query($sql_get);
+                                      while ($r = $res->fetch_array()) {
+                                        $title = $r['a_title']; 
+                                        $price = $r['a_price'];   
+                                        $aid = $r['a_id'];  
+                                      ?>
+
+
+                                            <div class="listings_two_page_content_single">
+                                              <div class="listings_two_page_main_img">
+                                                  <div class="listings_two_page_content_carousel owl-theme owl-carousel">
+                                                      
+                                                      <?php 
+                                                      $sql_img = "SELECT * from aimg where ai_id = '$aid'";
+                                                      $res1 = $con->query($sql_img);
+                                                      while ($im = $res1->fetch_array()) {
+                                                      ?>
+                                                      <div class="listings_two_page_img">
+                                                          <div class="listings_two_page_content_img_box">
+                                                          <img src="<?php echo 'images/'.$im['i_pic'] ?>" class="add_img" alt="" >
+                                                          </div>
+                                                          <div class="listings_two_page_content_icon">
+                                                              <i class="fa fa-heart"></i>
+                                                          </div>
+                                                          <div class="listingstwo_page_content_btn">
+                                                      
+                                                          <a href="#" class="featured_btn"><?php echo $r['a_type'] ?></a>
+                                                              <a href="#" class="sale_btn"><?php echo $r['a_cat'] ?></a>
+                                                          </div>
+                                                      </div>
+                                                      <?php } ?>
+
+                                                  </div>
+                                              </div>
+                                              <div class="listings_two_page_bottom_content" style="height: 305px;">
+                                                  <div class="listings_two_page_bottom_content_top">
+                                                      <h4 class="title"><a href="listing-details.html"><?php echo $title ?></a></h4>
+                                                      <p><?php echo $r['a_loc'].','.$r['a_city'] ?></p>
+                                                      <h3>Rs.<?php echo $price ?><span> Sqft</span></h3>
+                                                  </div>
+                                                  <div class="listings_two_page_bottom_item">
+                                                      <ul class="list-unstyled">
+                                                          <li><span class="icon-bed"></span><?php echo $r['a_bad'] ?></li>
+                                                          <li><span class="icon-shower"></span><?php echo $r['a_bath'] ?></li>
+                                                          <li><span class="icon-square-measument"></span><?php echo $r['a_area'] ?> sqft</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        <?php } ?>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>
+
+                          <div class="tab-pane fade" id="menu2" role="tabpanel" aria-labelledby="contact-tab" style="width:1050px;">
+                            <br>
+                            <br>
+                            <div class="listings_two_page_content">
+                                  <div class="row">
+                                    <div class="col-xl-8 col-lg-12">
+                                      <div class="listings_two_page_content_inner">
+
+                                      <?php 
+                                      $sql_get = "SELECT * from s_add where a_status = 'Rejected' and ag_id = '$agent_id'";
+                                      $res = $con->query($sql_get);
+                                      while ($r = $res->fetch_array()) {
+                                        $title = $r['a_title']; 
+                                        $price = $r['a_price'];   
+                                        $aid = $r['a_id'];  
+                                      ?>
+
+
+                                            <div class="listings_two_page_content_single">
+                                              <div class="listings_two_page_main_img">
+                                                  <div class="listings_two_page_content_carousel owl-theme owl-carousel">
+                                                      
+                                                      <?php 
+                                                      $sql_img = "SELECT * from aimg where ai_id = '$aid'";
+                                                      $res1 = $con->query($sql_img);
+                                                      while ($im = $res1->fetch_array()) {
+                                                      ?>
+                                                      <div class="listings_two_page_img">
+                                                          <div class="listings_two_page_content_img_box">
+                                                          <img src="<?php echo 'images/'.$im['i_pic'] ?>" class="add_img" alt="" >
+                                                          </div>
+                                                          <div class="listings_two_page_content_icon">
+                                                              <i class="fa fa-heart"></i>
+                                                          </div>
+                                                          <div class="listingstwo_page_content_btn">
+                                                      
+                                                          <a href="#" class="featured_btn"><?php echo $r['a_type'] ?></a>
+                                                              <a href="#" class="sale_btn"><?php echo $r['a_cat'] ?></a>
+                                                          </div>
+                                                      </div>
+                                                      <?php } ?>
+
+                                                  </div>
+                                              </div>
+                                              <div class="listings_two_page_bottom_content" style="height: 305px;">
+                                                  <div class="listings_two_page_bottom_content_top">
+                                                      <h4 class="title"><a href="listing-details.html"><?php echo $title ?></a></h4>
+                                                      <p><?php echo $r['a_loc'].','.$r['a_city'] ?></p>
+                                                      <h3>Rs.<?php echo $price ?><span> Sqft</span></h3>
+                                                  </div>
+                                                  <div class="listings_two_page_bottom_item">
+                                                      <ul class="list-unstyled">
+                                                          <li><span class="icon-bed"></span><?php echo $r['a_bad'] ?></li>
+                                                          <li><span class="icon-shower"></span><?php echo $r['a_bath'] ?></li>
+                                                          <li><span class="icon-square-measument"></span><?php echo $r['a_area'] ?> sqft</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        <?php } ?>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                            </div>
+
+
+                       
+                        </div>
                       </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                            
+
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6 mb-3">
-                  <div class="card cd1 h-100">
-                    <div class="card-body cb1">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
 
 
 
             </div>
+           
           </div>
 
         </div>
