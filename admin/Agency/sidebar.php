@@ -17,10 +17,6 @@
             <li class="dropdown active">
               <a href="../index-2.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
-
-
-
-            
         <?php 
         if( $_SESSION['designation'] == 'Super Admin'){
            ?>
@@ -61,10 +57,10 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Adds</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="seller-adds.php">All properties</a></li>
-                <li><a class="nav-link" href="unapproved-adds.php">Unapproved properties</a></li>
-                <li><a class="nav-link" href="approved-adds.php">Approved properties</a></li>
-                <li><a class="nav-link" href="rejected-adds.php">Rejected properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/seller-adds.php">All properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/unapproved-adds.php">Unapproved properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/approved-adds.php">Approved properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/rejected-adds.php">Rejected properties</a></li>
               
               </ul>
             </li>
@@ -80,13 +76,14 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="codesandbox"></i><span>Agency</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="../Agency/state-agency.php">All Agency</a></li>
-                <li><a class="nav-link" href="../Agency/unapproved-agency.php">Unapproved Agency</a></li>
-                <li><a class="nav-link" href="../Agency/approved-agency.php">Approved Agency</a></li>
-                <li><a class="nav-link" href="../Agency/rejected-agency.php">Rejected Agency</a></li>
+                <li><a class="nav-link" href="state-agency.php">All Agency</a></li>
+                <li><a class="nav-link" href="unapproved-agency.php">Unapproved Agency</a></li>
+                <li><a class="nav-link" href="approved-agency.php">Approved Agency</a></li>
+                <li><a class="nav-link" href="rejected-agency.php">Rejected Agency</a></li>
               
               </ul>
             </li>
+       
 
         <?php
          }
@@ -97,13 +94,13 @@
               <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Adds</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="seller-adds.php">All properties</a></li>
-                <li><a class="nav-link" href="unapproved-adds.php">Unapproved properties</a></li>
-                <li><a class="nav-link" href="approved-adds.php">Approved properties</a></li>
-                <li><a class="nav-link" href="rejected-adds.php">Rejected properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/seller-adds.php">All properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/unapproved-adds.php">Unapproved properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/approved-adds.php">Approved properties</a></li>
+                <li><a class="nav-link" href="../seller_adds/rejected-adds.php">Rejected properties</a></li>
               
               </ul>
-             </li>
+            </li>
 
              <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="send"></i><span>Chat</span></a>
@@ -118,16 +115,16 @@
 
                     <?php if($_SESSION['designation'] == 'Checker') {?>
 
-                      <li class="dropdown">
-                      <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Adds</span></a>
-                      <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="seller-adds.php">All properties</a></li>
-                        <li><a class="nav-link" href="unapproved-adds.php">Unapproved properties</a></li>
-                        <li><a class="nav-link" href="approved-adds.php">Approved properties</a></li>
-                        <li><a class="nav-link" href="rejected-adds.php">Rejected properties</a></li>
-
-                      </ul>
-                      </li>
+                         <li class="dropdown">
+                          <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Adds</span></a>
+                          <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="../seller_adds/seller-adds.php">All properties</a></li>
+                            <li><a class="nav-link" href="../seller_adds/unapproved-adds.php">Unapproved properties</a></li>
+                            <li><a class="nav-link" href="../seller_adds/approved-adds.php">Approved properties</a></li>
+                            <li><a class="nav-link" href="../seller_adds/rejected-adds.php">Rejected properties</a></li>
+                          
+                          </ul>
+                        </li>
 
                       <li class="dropdown">
                       <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="send"></i><span>Chat</span></a>

@@ -67,6 +67,7 @@ if(isset($_FILES['file'])) {
 
 	$letter_uploaded = "Letter-head/".$letter_name;
 	$temp = explode(".",$letter_name);
+	move_uploaded_file($letter_temp, $letter_uploaded);
 
 
 	$file_name = $_FILES['file']['name'];

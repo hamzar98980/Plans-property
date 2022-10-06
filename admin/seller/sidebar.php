@@ -17,6 +17,8 @@
             <li class="dropdown active">
               <a href="../index-2.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
+
+
         <?php 
         if( $_SESSION['designation'] == 'Super Admin'){
            ?>
@@ -29,6 +31,18 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="../users.php">Add User</a></li>
                 <li><a class="nav-link" href="../user-display.php">All Users</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="user"></i><span>Departments</span></a>
+              <ul class="dropdown-menu">
+             
+                <li><a class="nav-link" href="../dep-Approval.php">Add Approval</a></li>
+
+                <li><a class="nav-link" href="../dep-checker.php">Checker</a></li>
+
               </ul>
             </li>
 
@@ -60,7 +74,16 @@
 
               </ul>
             </li>
-
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="codesandbox"></i><span>Agency</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="../Agency/state-agency.php">All Agency</a></li>
+                <li><a class="nav-link" href="../Agency/unapproved-agency.php">Unapproved Agency</a></li>
+                <li><a class="nav-link" href="../Agency/approved-agency.php">Approved Agency</a></li>
+                <li><a class="nav-link" href="../Agency/rejected-agency.php">Rejected Agency</a></li>
+              
+              </ul>
+            </li>
         <?php
          }
          ?> 

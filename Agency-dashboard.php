@@ -1,6 +1,7 @@
 
 <?php include 'Layout/navbar.php';
 include 'dbconfig.php';
+include 'encode.php';
 // session_start();
 ?>
 
@@ -84,9 +85,9 @@ include 'dbconfig.php';
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="personalinfo.php">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Agency Dashboard</li>
             </ol>
           </nav>
           <!-- /Breadcrumb -->
@@ -353,7 +354,7 @@ include 'dbconfig.php';
                                               </div>
                                               <div class="listings_two_page_bottom_content" style="height: 305px;">
                                                   <div class="listings_two_page_bottom_content_top">
-                                                      <h4 class="title"><a href="listing-details.html"><?php echo $title ?></a></h4>
+                                                      <h4 class="title"><a href="property.php?id=<?php echo enc($r['a_id']) ?>"><?php echo $title ?></a></h4>
                                                       <p><?php echo $r['a_loc'].','.$r['a_city'] ?></p>
                                                       <h3>Rs.<?php echo $price ?><span> Sqft</span></h3>
                                                   </div>

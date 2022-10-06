@@ -78,6 +78,17 @@ include  'config.php';
          }
          ?> 
 
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="codesandbox"></i><span>Agency</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="./Agency/state-agency.php">All Agency</a></li>
+                <li><a class="nav-link" href="./Agency/unapproved-agency.php">Unapproved Agency</a></li>
+                <li><a class="nav-link" href="./Agency/approved-agency.php">Approved Agency</a></li>
+                <li><a class="nav-link" href="./Agency/rejected-agency.php">Rejected Agency</a></li>
+              
+              </ul>
+            </li>
+
             <?php if($_SESSION['designation'] == 'Add Aproval' or $_SESSION['designation'] == 'Checker') {?>
 
               <li class="dropdown">
