@@ -82,6 +82,17 @@ include('layout/navbar.php');
     border-radius: 50px;
     width: 15%;
 }
+.ftitle{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    height: 60px;
+    /* width: 150px; */
+}
+.ag1{
+    font-family:'Times New Roman', Times, serif;
+    color: #4c7ce3;
+}
 </style>
 
     <div class="page-wrapper">      
@@ -277,7 +288,73 @@ include('layout/navbar.php');
         </section>
         <!--Members Details End-->
 
+        <br><br><br>
 
+                            <?php 
+                            if(agency_verified2('1','0',$id)>0 && agency_verified2('0','1',$id) == 'Approved'){
+                            ?>
+                            <div class="container">
+                                <div class="col-sm-12">
+                                    <h2 class="ag1"><b>State Agency</b></h2><br>
+                                <div class="listings_two_page_content">
+                                  <div class="row">
+                                    <div class="col-xl-12 col-lg-12">
+                                      <div class="listings_two_page_content_inner">
+
+                                      <?php 
+                                      $sql_get = "SELECT * FROM `firm_regist` where f_status = 'Approved' and agent_id = '$id'";
+                                      $res = $con->query($sql_get);
+                                      $r = $res->fetch_array();
+                                      ?>
+
+
+                                            <div class="listings_two_page_content_single">
+                                              <div class="listings_two_page_main_img">
+                                                  <div class="listings_two_page_content_carousel owl-theme owl-carousel">
+                                                      
+                                                      
+                                                      <div class="listings_two_page_img">
+                                                          <div class="listings_two_page_content_img_box">
+                                                          <img src="<?php echo $r['fi_logo'] ?>" class="add_img" alt=""  style="height:310px ;"  width="250px">
+                                                          </div>
+                                                          <div class="listings_two_page_content_icon">
+                                                              <i class="fa fa-heart"></i>
+                                                          </div>
+                                                          <div class="listingstwo_page_content_btn">
+                                                      
+                                                          
+                                                          </div>
+                                                      </div>
+                                                      
+
+                                                  </div>
+                                              </div>
+                                              <div class="listings_two_page_bottom_content" style="height: 310px;">
+                                                  <div class="listings_two_page_bottom_content_top">
+                                                      <h4 class="title"><a href="agency-agent-display.php?firm_id=<?php echo $r['fi_id'] ?>"><?php echo $r['fi_name'] ?></a></h4>
+                                                      <p><?php echo $r['fi_address'] ?></p>
+                                                      <p class="ftitle"><?php echo $r['f_desc']?></p> <p>..Show More</p>
+                                                      <!-- <h3>Rs.<?php echo '6600'; ?><span> Sqft</span></h3> -->
+                                                  </div>
+                                                  <div class="listings_two_page_bottom_item">
+                                                      <ul class="list-unstyled">
+                                                         <a href="tel:<?php echo $r['fi_phone'] ?>"> <button class="btn btn-outline-primary">Call Now </button></a> &nbsp;&nbsp;&nbsp;
+                                                         <a href="mailto:<?php echo $r['fi_email'] ?>"> <button class="btn btn-outline-primary">Email Us </button></a>
+                                                          
+                                                          
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                  
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <?php } ?>
+    </div>
+</div>
 
 
 

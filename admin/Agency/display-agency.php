@@ -331,7 +331,7 @@ include '../dbconfig.php';
                 $ftel = $_POST['ftel'];
                 $email = $_POST['email'];
                 $fyear = $_POST['fyear'];
-                $desc = $_POST['city'];
+                $desc = $_POST['desc'];
 
                 $stats = $_POST['status'];
                 $uid = $_SESSION['u_id'];
@@ -339,7 +339,12 @@ include '../dbconfig.php';
                 $sql_upd = "UPDATE `firm_regist` SET `fi_name`='$name',`fi_email`='$email',`fi_city`='$city',`fi_cnic`='$cnic',`fi_phone`='$fphone',`fi_tel`='$ftel',`fi_address`='$adress',`f_desc`='$desc',`fi_year`='$fyear',`f_status`='$stats',`f_approved`='$uid' where fi_id = '$ad_id'";
                 // $sql_upd = "UPDATE firm_regist set f_status = '$stats',f_approved = '$uid' where fi_id = '$ad_id'";
                 if($conn->query($sql_upd)){
-                  header("Location: state-agency.php?success=Property has been Updated");
+
+                  $sql_upd2 = "UPDATE s_regist set agency_regist = '$ad_id' where s_id = '$ag_id'";
+                  if($conn->query($sql_upd2)){
+                    header("Location: state-agency.php?success=Property has been Updated");
+                  }
+
                 // echo 'insert';
                 }
                 else{

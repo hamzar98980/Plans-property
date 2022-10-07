@@ -183,15 +183,7 @@ session_start();
                                     </div>
                                     ';
                                 }
-                                // else{
 
-                                //     echo '
-                                //     <div class="header_btn_1">
-                                //     <button class="btn btn-primary" id="toastr-4">Add New Property</button>
-                                //     </div>
-                                //     ';
-                             
-                                // }
 
                             ?>
 
@@ -204,7 +196,10 @@ session_start();
                                          <!--<span class="fa fa-user-circle"></span>-->
                                         </a>
                                         <div class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="dashboard.php">Dashboard</a>
+
+                                                <?php if(agency_verified('0','1') != 'Approved'){ ?>
+                                                    <a class="dropdown-item" href="dashboard.php">Dashboard</a>
+                                                <?php }  ?>
                                             
                                             <?php 
 
@@ -237,9 +232,11 @@ session_start();
                                 // }
                                 ?>
                                 <div class="icon_search_box">
-                                    <a href="#" class="main-nav__search search-popup__toggler">
+                                    <form action="" method="get">
+                                    <a href="" class="main-nav__search search-popup__toggler">
                                         <i class="icon-magnifying-glass"></i>
                                     </a>
+                                    </form>
                                 </div>
                             </div>
                         </div>

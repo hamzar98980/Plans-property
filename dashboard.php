@@ -164,7 +164,7 @@ function generateNumericOTP($n) {
                     <div class="col-xl-8 col-lg-8">
                         <div class="members_details_right"> 
                             <div class="members_details_right_title">
-                                <h3><?php echo $r['s_name'] ?> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <h3><?php echo $r['s_name'] ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
                                 
                                 <?php if(no_of_rows_bytable('s_add','where ag_id ='.$r['s_id'].'') >= 5){
