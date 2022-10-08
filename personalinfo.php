@@ -125,16 +125,25 @@ function generateNumericOTP($n) {
                         <br>
                     <div class="row">
                         <div class="col-sm-6">
-                                <di class="form-group">
+                                <div class="form-group">
                                     <label for="">First Name</label>
                                     <input type="text" class="form-control" name="st_name" value="<?php echo $first_name ?> " <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?> >
-                                </di>
+                                    <?php if (isset($_GET['st_name'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['st_name']; ?>
+                                                </small>
+                                            <?php } ?></div>
                         </div>
                         <div class="col-sm-6">
-                                <di class="form-group">
+                                <div class="form-group">
                                     <label for="">Last Name</label>
                                     <input type="text" class="form-control" name="lst_name" value="<?php echo $last_name ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </di>
+                                <?php if (isset($_GET['lst_name'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['lst_name']; ?>
+                                                </small>
+                                            <?php } ?>
+                                  </div>
                         </div>
                    </div>
                     <br>
@@ -143,13 +152,22 @@ function generateNumericOTP($n) {
                                 <div class="form-group">
                                     <label for="">WhatsApp Number</label>
                                     <input type="text" class="form-control" name="num" value="<?php echo $r['s_num'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </div>
+                                    <?php if (isset($_GET['num'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['num']; ?>
+                                                </small>
+                                            <?php } ?>   </div>
                         </div>
                         <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">Id Card Number</label>
                                     <input type="text" class="form-control" name="cnic" value="<?php echo $r['s_cnic'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </div>
+                                    <?php if (isset($_GET['cnic'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['cnic']; ?>
+                                                </small>
+                                            <?php } ?>
+                                  </div>
                         </div>
                    </div>
                     
@@ -157,8 +175,13 @@ function generateNumericOTP($n) {
                         <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">Password</label>
-                                    <input type="text" class="form-control" name="pass" value="<?php echo $r['s_pass'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </div>
+                                    <input type="password" class="form-control" name="pass" value="<?php echo $r['s_pass'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
+                                    <?php if (isset($_GET['pass'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['pass']; ?>
+                                                </small>
+                                            <?php } ?>
+                                  </div>
                         </div>
                         <div class="col-sm-6">
                                 <div class="form-group">
@@ -173,7 +196,12 @@ function generateNumericOTP($n) {
                             <div class="form-group">
                                     <label for="">Email</label>
                                     <input type="text" class="form-control" name="email" value="<?php echo $r['s_email'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </div>
+                                    <?php if (isset($_GET['email'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['email']; ?>
+                                                </small>
+                                            <?php } ?>
+                                  </div>
                         </div>
                    </div>
 
@@ -181,15 +209,32 @@ function generateNumericOTP($n) {
                         <div class="col-sm-6">
                             <div class="form-group">
                                     <label for="">Gender</label>
-                                    <input type="text" name="gender" class="form-control" value="<?php echo $r['s_gen'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </div>
+                                    <select name="gender" class="form-control ">
+                                                    <option class="active">Select</option>
+                                                    <option 
+                                                    <?php if (isset($r['s_gen'])=="Male"){ echo "Selected";
+                                                      }?> value="Male">Male</option>
+                                                    <option <?php if (isset($r['s_gen'])=="Female"){ echo "Selected";
+                                                      }?>value="Female">Female</option>
+                                                </select>
+                                                <?php if (isset($_GET['gender'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['gender']; ?>
+                                                </small>
+                                            <?php } ?>
+                                  </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
                                     <label for="">Age</label>
-                                    <input type="number" name="age" class="form-control" value="<?php echo $r['s_age'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
-                                </div>
+                                    <input type="number" min="18" name="age" class="form-control" value="<?php echo $r['s_age'] ?>" <?php if(!isset($_REQUEST['update'])){ echo 'readonly';} ?>>
+                                    <?php if (isset($_GET['cnic'])) { ?>
+                                                <small class="text-danger">
+                                                <?php echo $_GET['cnic']; ?>
+                                                </small>
+                                            <?php } ?>
+                                  </div>
                         </div>
                    </div>
                    <div class="row">
@@ -258,30 +303,177 @@ function generateNumericOTP($n) {
 
 <?php 
 if(isset($_REQUEST['upd_profile'])){
-    $la_name = $_REQUEST['lst_name'];
-    $st_name = $_REQUEST['st_name'];
+    $head= "Location: personalinfo.php?update";
+function validate($data){
 
-    $name = $st_name.' '. $la_name;
-    // echo $name;
-    $pass = $_REQUEST['pass'];
-    $confirm_pass = $_REQUEST['cpass'];
-    $num = $_REQUEST['num'];
-    $gen = $_REQUEST['gender'];
-    $cnic = $_REQUEST['cnic'];
-    $age = $_REQUEST['age'];
-    $email = $_REQUEST['email'];
+    $data = trim($data);
 
-    $sql_q = "UPDATE s_regist set s_name = '$name',s_email = '$email',s_age = '$age',s_gen = '$gen',
+    $data = stripslashes($data);
+
+    $data = htmlspecialchars($data);
+
+    return $data;
+
+ }
+
+ if(empty($_REQUEST['st_name']))
+    {
+    $head=$head."&st_name=Required*";    
+    }
+    else
+    {
+      $temp = validate($_REQUEST['st_name']);
+        if(!preg_match("/^[a-zA-Z-']*$/",$temp))
+        {
+        
+            $head=$head."&st_name=Alphabets Only";    
+        }
+        else
+        {
+            $st_name = validate($temp);
+        }
+    }
+        if(empty($_REQUEST['lst_name']))
+    {
+    $head=$head."&lst_name=Required*";    
+    }
+    else
+    {
+        if(!preg_match("/^[a-zA-Z-']*$/",$_REQUEST['lst_name']))
+        {
+        
+            $head=$head."&lst_name=Alphabets Only";    
+        }
+        else
+        {
+            $la_name = validate($_REQUEST['lst_name']);
+            $name = $st_name .' '. $la_name;
+          }
+    }
+ if(empty($_REQUEST['pass']))
+{
+    $head=$head."&pass=Required*";    
+}    
+else
+{
+        $pass = validate($_REQUEST['pass']);
+}
+   
+if(empty($_REQUEST['cpass']))
+{
+    $head=$head."&cpass=Required*";    
+}    
+else
+{
+  $confirm_pass = validate($_REQUEST['cpass']);
+        if($pass!=$confirm_pass)
+        {
+            $head=$head."&pass=Password does not match*";    
+        }
+}
+if(empty($_REQUEST['email']))
+    {
+    $head=$head."&email=Required*";    
+    }
+    else
+    {
+
+        if (!filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)) {
+            $head=$head."&email=Invalid email format";    
+        }
+        else
+        {
+            $email = validate($_REQUEST['email']);
+            $sql = "SELECT * from s_regist where s_email = '$email'";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) === 2) {
+    
+                $head=$head."&email=Email is already register";    
+            } 
+            }
+    }
+
+    if(isset($_REQUEST['gender']))
+{
+if($_REQUEST['gender']=="Select")
+{
+$head=$head."&gender=Required*";    
+}
+else
+{
+        $gen = validate($_REQUEST['gender']);
+    }
+
+}
+if(empty($_REQUEST['age']))
+    {
+    $head=$head."&age=Required*";    
+    }
+    else
+    {
+        if(!($_REQUEST['age']>=18)){
+            $head=$head."&age=Above 18 is required";    
+        }
+        else{
+            $age = validate($_REQUEST['age']);
+        }
+    }
+
+    if(empty($_REQUEST['num']))
+    {
+    $head=$head."&num=Required*";    
+    }
+    else
+    {
+        if(!preg_match("/^[0-9]{11}$/",$_REQUEST['num'])){
+            $head=$head."&num=Invalid Number";    
+        }
+        else{
+            $num = $_REQUEST['num'];
+            $sql = "SELECT * from s_regist where s_num = '$num'";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) === 2) {
+    
+                $head=$head."&num=Number is already register";    
+            }  }
+
+    }
+
+    if(empty($_REQUEST['cnic']))
+    {
+    $head=$head."&cnic=Required*";    
+    }
+    else
+    {
+        if(!preg_match("/^[0-9]{13}$/",$_REQUEST['cnic'])){
+            $head=$head."&cnic=Invalid Nic Number";    
+        }
+        else{
+            $cnic = validate($_REQUEST['cnic']);
+            $sql = "SELECT * from s_regist where s_cnic = '$cnic'";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) === 2) {
+    
+                $head=$head."&cnic=Id Card is already register";    
+            } }
+    }
+        
+if(($head=="Location: personalinfo.php?update"))
+    {
+      $sql_q = "UPDATE s_regist set s_name = '$name',s_email = '$email',s_age = '$age',s_gen = '$gen',
     s_cnic = '$cnic',s_num = '$num' where s_id = '$sid'";
     if($con->query($sql_q)){
         header("Location:personalinfo.php");
 
-    }else{
-        echo '<script>alert("User did not update")</script>';
+    }}
+
+    else{
+      header($head);
     }
+  }
 
     
-}
+
 
 
 ?>

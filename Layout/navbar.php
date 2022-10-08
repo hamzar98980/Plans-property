@@ -63,9 +63,9 @@ session_start();
 
 <body>
 
- <!-- <div class="preloader">
+<div class="preloader">
         <img src="assets/images/loader.png" class="preloader__image" alt="">
-    </div> -->
+    </div>
     <div class="page-wrapper">
 
         <div class="site-header__header-one-wrap clearfix">

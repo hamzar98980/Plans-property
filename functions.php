@@ -27,13 +27,14 @@ function agency_verified($num_row,$status){
     $res = mysqli_query($con,$sql_q);
     $r = mysqli_fetch_assoc($res);
     $num = mysqli_num_rows($res);
+    if(mysqli_num_rows($res)>0){
     if($num_row == '0' && $status == '1'){
         return $r['f_status'];
     }else if($num_row == '1' && $status == '0'){
         return $num;
     }else{
         return 'Incorrect Syntax';
-    }
+    }}
 }
 
 function agency_verified2($num_row,$status,$ag_id){

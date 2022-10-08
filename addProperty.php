@@ -2,7 +2,6 @@
 ob_start();
 include 'dbconfig.php';
 $title="Add Property ";
-include 'functions.php';
 include('Layout/navbar.php');
 if(empty($_SESSION['id']))
 {

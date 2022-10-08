@@ -2,14 +2,13 @@
 ob_start();
 include('Layout/navbar.php');
 include 'dbconfig.php';
-include 'dbconfig.php';
 include 'encode.php';
 ?>
 
 <?php 
 function totla_loc($val1){
     include 'dbconfig.php';  
-    $sql_l = "SELECT * from s_add where a_city = '$val1' and a_status = 'Approved'";
+    $sql_l = "SELECT * from s_add where a_city = '$val1' and a_status = 'Approved' ";
     $r = $con->query($sql_l);
     $num = mysqli_num_rows($r);
     if($num >0){
@@ -381,7 +380,7 @@ function totla_loc($val1){
                                                           
                                 <?php 
                                 
-                                $sql_get1 = "select * from s_add";
+                                $sql_get1 = "select * from s_add where a_status = 'Approved' ORDER BY a_id ASC LIMIT 6";
                                 $result1 = $con->query($sql_get1);
                                  while($row1 = $result1->fetch_array()){
                                          $a_id = $row1['a_id'];

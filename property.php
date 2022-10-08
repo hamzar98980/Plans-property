@@ -23,7 +23,9 @@ if(mysqli_num_rows($res)==0){
 else
 {
   while ($r = $res->fetch_array()) {
-$title =$r['a_title'];
+
+
+    $title =$r['a_title'];
 include('layout/navbar.php');
 ob_start();
 ?>

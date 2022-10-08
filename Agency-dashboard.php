@@ -182,16 +182,15 @@ include 'encode.php';
                       <h4 class="text-info"><?php echo $r['s_name'] ?></h4>
                       <p class="text-secondary mb-1"><i class="text-success fa fa-check"> </i> Verified Property Agent</p>
                       <p class="text-muted font-size-sm"></p>
-                      <button class="btn1 btn btn-outline-primary">Chat Now!</button>
                       
                       <a  class="btn green-btn btn-success btn_w" href="https://api.whatsapp.com/send?phone=<?php 
-                        if(substr($rm['s_num'],0,1)=="0")
+                        if(substr($r['s_num'],0,1)=="0")
                         {
-                            echo "92".substr($rm['s_num'], 1);
+                            echo "92".substr($r['s_num'], 1);
                         }
                         else {
-                            echo "92".$rm['s_num']; 
-                            }  ?>&text=I Would like to inquire about your property" target="_blank"><i class="fab fa-whatsapp"> WhatsApp </i></a>
+                            echo "92".$r['s_num']; 
+                            }  ?>&text=I Would like to inquire about your properties" target="_blank"><i class="fab fa-whatsapp"> WhatsApp </i></a>
                     </div>
                   </div>
                 </div>
